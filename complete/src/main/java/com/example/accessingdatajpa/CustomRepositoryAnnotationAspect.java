@@ -14,7 +14,12 @@ public class CustomRepositoryAnnotationAspect {
 
     private static final Logger log = LoggerFactory.getLogger(CustomRepositoryAnnotationAdvisor.class);
 
-    @Pointcut("@within(com.example.accessingdatajpa.CustomRepositoryAnnotation)")
+    @Pointcut("execution(* com.example.tlw.CustomerRepositoryImpl.*(..))")
+    public void impl() {
+        // nop - pointcut
+    }
+
+    @Pointcut("execution(* (@com.example.accessingdatajpa.CustomRepositoryAnnotation *..*).*(..))")
     public void annotated() {
         // nop - pointcut
     }

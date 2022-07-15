@@ -1,0 +1,6 @@
+<aspectj>
+    <aspects>
+        <aspect name="com.example.accessingdatajpa.CustomRepositoryAnnotationAspect"/>
+        <weaver options="-verbose -showWeaveInfo"/>
+    </aspects>
+</aspectj>
