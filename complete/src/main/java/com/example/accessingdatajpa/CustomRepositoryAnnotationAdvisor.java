@@ -12,7 +12,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class CustomRepositoryAnnotationAdvisor extends AbstractPointcutAdvisor {
 
     private static final Logger log = LoggerFactory.getLogger(CustomRepositoryAnnotationAdvisor.class);
@@ -26,7 +26,7 @@ public class CustomRepositoryAnnotationAdvisor extends AbstractPointcutAdvisor {
             @Nullable
             @Override
             public Object invoke(@NonNull MethodInvocation invocation) throws Throwable {
-                log.info("DemoAnnotationAdvisor: {}", invocation.getMethod().getName());
+              System.out.println("DemoAnnotationAdvisor: " + invocation.getMethod().getName());
                 return invocation.proceed();
             }
         };
