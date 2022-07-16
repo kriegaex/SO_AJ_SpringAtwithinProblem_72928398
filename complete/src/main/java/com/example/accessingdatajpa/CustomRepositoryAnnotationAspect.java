@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class CustomRepositoryAnnotationAspect {
 
-    private static final Logger log = LoggerFactory.getLogger(CustomRepositoryAnnotationAdvisor.class);
+    private static final Logger log = LoggerFactory.getLogger(CustomRepositoryAnnotationAspect.class);
 
     @Pointcut("execution(* com.example.tlw.CustomerRepositoryImpl.*(..))")
     public void impl() {
@@ -25,18 +25,12 @@ public class CustomRepositoryAnnotationAspect {
     }
 
     @Around("annotated()")
-    public Object invoke(ProceedingJoinPoint pjp) {
+    public Object invoke(ProceedingJoinPoint pjp) throws Throwable {
         return doProceed(pjp);
     }
 
-    protected Object doProceed(ProceedingJoinPoint pjp) {
-        try {
-            log.info("CustomRepositoryAnnotationAspect: {}", pjp.getSignature().getName());
-            return pjp.proceed();
-        } catch (RuntimeException | Error ex) {
-            throw ex;
-        } catch (Throwable ex) {
-            throw new RuntimeException(ex);
-        }
+    protected Object doProceed(ProceedingJoinPoint pjp) throws Throwable {
+        log.info("CustomRepositoryAnnotationAspect: {}", pjp.getSignature().getName());
+        return pjp.proceed();
     }
 }
