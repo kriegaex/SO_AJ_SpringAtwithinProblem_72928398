@@ -15,7 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
-		<aspectj.version>1.9.9</aspectj.version>
+		<aspectj.version>1.9.9.1</aspectj.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -36,11 +36,13 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
+      <version>${aspectj.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
+      <version>${aspectj.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -77,10 +79,14 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M7</version>
 				<configuration>
 					<forkCount>1</forkCount>
 					<reuseForks>false</reuseForks>
-					<argLine>--add-opens java.base/java.lang=ALL-UNNAMED -javaagent:"${project.build.directory}/aspectjweaver-${aspectj.version}.jar"</argLine>
+					<argLine>
+						--add-opens java.base/java.lang=ALL-UNNAMED
+						-javaagent:"${project.build.directory}/aspectjweaver-${aspectj.version}.jar"
+					</argLine>
 				</configuration>
 			</plugin>
 		</plugins>
