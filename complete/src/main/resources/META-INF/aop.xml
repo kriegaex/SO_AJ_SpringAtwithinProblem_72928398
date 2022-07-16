@@ -1,6 +1,8 @@
 <aspectj>
-    <aspects>
-        <aspect name="com.example.accessingdatajpa.CustomRepositoryAnnotationAspect"/>
-        <weaver options="-verbose -showWeaveInfo"/>
-    </aspects>
+  <weaver options="-verbose -showWeaveInfo"/>
+  <aspects>
+    <aspect name="com.example.accessingdatajpa.CustomRepositoryAnnotationAspect"/>
+    <!-- Exclude Spring aspects to avoid any possible side effects -->
+    <exclude within="org.springframework..*"/>
+  </aspects>
 </aspectj>

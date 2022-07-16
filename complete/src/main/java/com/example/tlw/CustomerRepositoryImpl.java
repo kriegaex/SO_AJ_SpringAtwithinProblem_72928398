@@ -20,12 +20,18 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public <S extends Customer> S save(S entity) {
+        System.out.println("saving");
         return null;
     }
 
     @Override
     public <S extends Customer> Iterable<S> saveAll(Iterable<S> entities) {
+        System.out.println("Saving all");
         return null;
+    }
+
+    public void foo() {
+        System.out.println("foo");
     }
 
     @Override

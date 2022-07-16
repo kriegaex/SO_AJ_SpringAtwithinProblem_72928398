@@ -7,7 +7,12 @@ public class CustomRepositoryImplTest {
 
     @Test
     void testLTW() {
-        new CustomerRepositoryImpl().save(null);
+        CustomerRepositoryImpl repository = new CustomerRepositoryImpl();
+        // This method is woven as expected
+        repository.saveAll(null);
+        // These methods are not woven with the 'annotated()' pointcut, only with 'impl()', which is puzzling
+        repository.save(null);
+        repository.foo();
     }
 
 }
